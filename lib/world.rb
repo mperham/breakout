@@ -9,33 +9,38 @@ class World < Gosu::Window
 
     @ball = Ball.new(self)
     @paddle = Paddle.new
-    @level = Level.new(self)
+    @level = Level.new
+
+    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+    @score = 0
   end
 
   def update
     @ball.update
 
-    if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
+    if button_down?(Gosu::KbLeft) || button_down?(Gosu::GpLeft)
       @paddle.left
     end
-    if button_down? Gosu::KbRight or button_down? Gosu::GpRight then
+    if button_down?(Gosu::KbRight) || button_down?(Gosu::GpRight)
       @paddle.right
     end
 
+    # check if we hit the bottom
     if @ball.y >= World::HEIGHT
       puts "You lost, jive sucker."
       exit(-1)
     end
 
-    if @level.hit?(@ball)
-      @level.last_hit_block = true
-      @level.combo!
+    if @ball.x <= 0
       @ball.bounce
-    end
-
-    if @paddle.hit?(@ball)
-      @level.last_hit_block = false
-      @level.combo = false
+    elsif @ball.y <= 0
+      @ball.bounce
+    elsif @ball.x >= World::WIDTH
+      @ball.bounce
+    elsif @level.hit?(@ball)
+      @ball.bounce
+      @score += 100
+    elsif @paddle.hit?(@ball)
       @ball.bounce
     end
 
@@ -46,6 +51,8 @@ class World < Gosu::Window
   end
 
   def draw
+    @font.draw("Score: #{@score}", 10, 10, 1, 1.0, 1.0, 0xffffff00)
+
     @paddle.draw(self)
     @ball.draw(self)
     @level.draw(self)
