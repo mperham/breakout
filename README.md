@@ -2,6 +2,8 @@
 
 This is a simple clone of the classic [Breakout / Arkanoid](https://en.wikipedia.org/wiki/Arkanoid) game, written in Ruby using the Gosu gaming library.
 
+![screenshot](https://github.com/mperham/breakout/blob/master/screenshot.png)
+
 ## Installation
 
 1. Install gosu. [OSX](https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X), [Linux](https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux), [Windows](https://github.com/jlnr/gosu/wiki/Getting-Started-on-Windows)
