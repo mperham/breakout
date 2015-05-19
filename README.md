@@ -6,7 +6,7 @@ This is a simple clone of the classic [Breakout / Arkanoid](https://en.wikipedia
 
 1. Install gosu. [OSX](https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X), [Linux](https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux), [Windows](https://github.com/jlnr/gosu/wiki/Getting-Started-on-Windows)
 2. Run `bundle`.
-3. Run `bundle exec ruby main.rb`.
+3. Run `./breakout`
 4. Enjoy.
 
 ## Authors
